@@ -18,5 +18,13 @@ public class ApplicationContext {
 
         TestFacadePostService testFacadePostService = new TestFacadePostService(testPostService, testPostRepository);
 
+        beans.put("testPostRepository", testPostRepository);
+        beans.put("testPostService", testPostService);
+        beans.put("testFacadePostService", testFacadePostService);
+    }
+
+    @SuppressWarnings("unchecked")
+    public <T> T genBean(String beanName) {
+        return (T) beans.get(beanName);
     }
 }
